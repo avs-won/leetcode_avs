@@ -1,6 +1,6 @@
 """12"""
 
-import sys
+""" import sys
 
 P,N=map(int,sys.stdin.readline().rstrip().split())
 #피로도 200미만인 경우 장신구 제작
@@ -20,7 +20,7 @@ for i in pirodo:
     result+=1
 
 print(result)
-
+ """
 #195 4
 #20 1 8 1
 
@@ -79,3 +79,22 @@ bfs(V)
 print(*answer_dfs)
 print(*answer_bfs)
 '''
+
+
+
+
+
+
+
+
+
+
+
+
+import pyautogui
+import time
+
+time.sleep(2)  # 2초 대기 후 마우스 이동 및 클릭
+pyautogui.moveTo(500, 500)  # (500, 500)으로 마우스 이동
+for i in range(20):
+    pyautogui.click()  # 클릭

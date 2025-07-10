@@ -315,8 +315,8 @@ print(sol.majorityElement([2,2,1,1,1,2,2]))
 
 #https://school.programmers.co.kr/learn/courses/30/lessons/131701
 
-""" 
-def solution(elements):
+
+""" def solution(elements):
     answer = 0
     elements*=2 #배열의 길이를 넘어가면 계산이 조금 복잡해짐
     N=len(elements) #배열 길이 (원본 2배)
@@ -337,10 +337,52 @@ def solution(elements):
     
     
 print(solution([7,9,1,1,4]))
-
  """
 
-"""12353234354"""
+
+#8주차 -------------------------------------------------------------------
+#https://leetcode.com/problems/jump-game/?envType=study-plan-v2&envId=top-interview-150
+""" 
+class Solution(object):
+    def canJump(self, nums):
+        
+        n=len(nums)
+        
+        max_dis=0
+        
+        for i in range(n):
+            
+            if i>max_dis:
+                return False
+            else:
+                max_dis=max(max_dis,i+nums[i])
+
+        return True
+ """
+
+#https://leetcode.com/problems/ransom-note/description/?envType=study-plan-v2&envId=top-interview-150
+
+
+
+from collections import Counter
+
+
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        rans_cnt=Counter(ransomNote)
+        mag_cnt=Counter(magazine)
+        
+        for c in ransomNote:
+            if mag_cnt[c]==0:
+                return False
+            mag_cnt[c]-=1
+            
+        return True
+
+
+
+
+
 
 
 
