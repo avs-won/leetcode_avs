@@ -85,16 +85,36 @@ print(*answer_bfs)
 
 
 
+#https://school.programmers.co.kr/learn/courses/30/lessons/131127?language=python3
+
+from collections import Counter
+
+def solution(want, number, discount):
+        answer = 0
+        
+        want_dict={}
+        want_dict=dict(zip(want,number))
+        #1단계 want와 number를 dict로 만들기
+
+        for i in range(len(discount)-9):
+            current_dis=discount[i:i+10]
+            current_cnt=Counter(current_dis)
+            #2단계 10일씩 슬라이싱해서 할인 품목 조사
+            
+            for item in want_dict:
+                if current_cnt[item] < want_dict[item]:
+                    break
+            else:
+                answer+=1
+            #할인 품목 조사 후 want_dict와 비교해서 조건에 따라 answer 값 증가 및 패스
+            
+        return answer
+#for ~ else
+#else 구문은 for 문이 break 없이 정상적으로 돌 경우 실행 되는 파이썬만의 문법
 
 
 
+print(solution(["banana", "apple", "rice", "pork", "pot"],	[3, 2, 2, 2, 1]	,["chicken", "apple", "apple", "banana", "rice", "apple", "pork", "banana", "pork", "rice", "pot", "banana", "apple", "banana"]))
 
 
 
-import pyautogui
-import time
-
-time.sleep(2)  # 2초 대기 후 마우스 이동 및 클릭
-pyautogui.moveTo(500, 500)  # (500, 500)으로 마우스 이동
-for i in range(20):
-    pyautogui.click()  # 클릭
