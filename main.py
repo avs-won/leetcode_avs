@@ -81,17 +81,12 @@ print(*answer_bfs)
 '''
 
 
-
-
-
-
 #https://school.programmers.co.kr/learn/courses/30/lessons/131127?language=python3
 
 from collections import Counter
 
 def solution(want, number, discount):
         answer = 0
-        
         want_dict={}
         want_dict=dict(zip(want,number))
         #1단계 want와 number를 dict로 만들기
@@ -114,7 +109,33 @@ def solution(want, number, discount):
 
 
 
-print(solution(["banana", "apple", "rice", "pork", "pot"],	[3, 2, 2, 2, 1]	,["chicken", "apple", "apple", "banana", "rice", "apple", "pork", "banana", "pork", "rice", "pot", "banana", "apple", "banana"]))
 
+#https://school.programmers.co.kr/learn/courses/30/lessons/76502
 
+def solution(s):
+    answer = 0
+    
+    for i in range(len(s)):
+        temp=s[i:]+s[:i]
+        temp_result=rotate_stack(temp)
+        if temp_result:
+            answer+=1
 
+    return answer
+
+def rotate_stack(stringg):
+    stack=[]
+    pairs = {')':'(', '}':'{', ']':'['}
+    for i in stringg:
+        if i in ["(","{","["]:
+            stack.append(i)
+        else:
+            if not stack:
+                return False
+            if stack[-1]==pairs[i]:
+                stack.pop()
+            else:
+                return False
+    return len(stack)==0
+
+solution("[](){}")
