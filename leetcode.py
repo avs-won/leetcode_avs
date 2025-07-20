@@ -342,7 +342,8 @@ print(solution([7,9,1,1,4]))
 
 #8주차 -------------------------------------------------------------------
 #https://leetcode.com/problems/jump-game/?envType=study-plan-v2&envId=top-interview-150
-""" 
+
+"""  
 class Solution(object):
     def canJump(self, nums):
         
@@ -362,8 +363,7 @@ class Solution(object):
 
 #https://leetcode.com/problems/ransom-note/description/?envType=study-plan-v2&envId=top-interview-150
 
-
-
+""" 
 from collections import Counter
 
 
@@ -378,12 +378,61 @@ class Solution(object):
             mag_cnt[c]-=1
             
         return True
+ """
 
 
+#9주차 -----------------------------------------------
+#https://leetcode.com/problems/length-of-last-word/description/?envType=study-plan-v2&envId=top-interview-150
 
+""" 
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        
+        result=0
+        flag=False
+        s=reversed(s)
+        
+        for i in s:
+            if i != ' ':
+                flag=True
+                result+=1
+                
+            elif i == ' ' and flag == True:
+                break
+            
+        return result
+         
+"""
 
+#https://leetcode.com/problems/roman-to-integer/?envType=study-plan-v2&envId=top-interview-150
 
-
+class Solution(object):
+    def romanToInt(self, s):
+        roman_map = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+                    }
+        
+        result=0
+        
+        
+        for i in range(len(s)-1):
+            current=roman_map[s[i]]
+            next_symbol=roman_map[s[i+1]]
+            
+            if current < next_symbol:
+                result-=current
+            else:
+                result+=current
+            
+        result+=roman_map[s[-1]]
+        
+        return result
 
 
 
