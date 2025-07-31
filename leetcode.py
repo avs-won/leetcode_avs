@@ -401,11 +401,11 @@ class Solution(object):
                 break
             
         return result
-         
-"""
+"""   
+
 
 #https://leetcode.com/problems/roman-to-integer/?envType=study-plan-v2&envId=top-interview-150
-
+""" 
 class Solution(object):
     def romanToInt(self, s):
         roman_map = {
@@ -433,6 +433,67 @@ class Solution(object):
         result+=roman_map[s[-1]]
         
         return result
+ """
+
+
+#10주차----------------------------------------------------------------------------------
+#https://leetcode.com/problems/summary-ranges/description/?envType=study-plan-v2&envId=top-interview-150
+
+""" 
+class Solution(object):
+    def summaryRanges(self, nums):
+        result=[] #결과 배열
+        start_pos=0 #시작 지점 위치 정보
+        if not nums:
+            return []
+        
+        for i in range(len(nums)-1):
+            
+            if nums[i]+1 == nums[i+1]: #만약 연속된 숫자라면
+                pass
+            else : #연속되지 않는다면
+                
+                if nums[start_pos]==nums[i]:
+                    result.append(str(nums[i]))
+                else:
+                    result.append(f"{nums[start_pos]}->{nums[i]}")
+                
+                start_pos=i+1 #새로운 시작 점
+                
+        
+        if start_pos == len(nums) - 1:  #마지막 원소가 1개라면 
+            result.append(str(nums[start_pos]))
+        else: # 그렇지 않다면
+            result.append(f"{nums[start_pos]}->{nums[-1]}")
+    
+        return result
+    
+sol=Solution()
+
+print(sol.summaryRanges([0,1,2,5,6,7]))
+ """
+
+
+#https://leetcode.com/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=top-interview-150
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        s=s.split() #좌우 공백 제거 
+        result=' '.join(s[::-1])
+
+
+        return result
+
+
+sol=Solution()
+
+print(sol.reverseWords("  hello world  "))
+
+
+
+
+
+
 
 
 
