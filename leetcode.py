@@ -476,6 +476,7 @@ print(sol.summaryRanges([0,1,2,5,6,7]))
 
 #https://leetcode.com/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=top-interview-150
 
+""" 
 class Solution:
     def reverseWords(self, s: str) -> str:
         s=s.split() #좌우 공백 제거 
@@ -488,13 +489,56 @@ class Solution:
 sol=Solution()
 
 print(sol.reverseWords("  hello world  "))
+ """
+
+#11주차 ------------------------------------------------
+
+#https://leetcode.com/problems/is-subsequence/description/?envType=study-plan-v2&envId=top-interview-150
+
+""" 
+class Solution(object):
+    def isSubsequence(self, s, t):
+
+        i,j=0,0
+        
+        while i< len(s) and j<len(t):
+            if s[i] == t[j] :
+                i+=1
+            j+=1
+
+        if i == len(s):
+            return True
+        else:
+            return False
+    
+sol = Solution()
+
+print(sol.isSubsequence("abc","akfbdkce"))
+            
+ """            
 
 
+#https://leetcode.com/problems/simplify-path/description/?envType=study-plan-v2&envId=top-interview-150
 
-
-
-
-
+class Solution(object):
+    def simplifyPath(self, path):
+        
+        directory=path.split('/')
+        stack=[]
+                
+        for i in directory:
+            if i == '' or i == '.' : 
+                continue
+            elif i == '..':
+                if stack:
+                    stack.pop()
+            else :
+                stack.append(i)
+    
+        return '/'+'/'.join(stack)
+                
+sol=Solution()
+print(sol.simplifyPath("/.../a/../b/c/../d/./"))
 
 
 
