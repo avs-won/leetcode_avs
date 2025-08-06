@@ -520,6 +520,7 @@ print(sol.isSubsequence("abc","akfbdkce"))
 
 #https://leetcode.com/problems/simplify-path/description/?envType=study-plan-v2&envId=top-interview-150
 
+""" 
 class Solution(object):
     def simplifyPath(self, path):
         
@@ -540,6 +541,23 @@ class Solution(object):
 sol=Solution()
 print(sol.simplifyPath("/.../a/../b/c/../d/./"))
 
+ """
 
+#https://leetcode.com/problems/longest-common-prefix/description/?envType=study-plan-v2&envId=top-interview-150
 
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        
+        temp=strs[0]
+        
+        for i in strs[1:]:
+            while not i.startswith(temp):
+                temp=temp[:-1]
+            if not temp:
+                return ""
+        return temp
+    
+    
+sol=Solution()
 
+print(sol.longestCommonPrefix(["flower","flow","flight"]))
