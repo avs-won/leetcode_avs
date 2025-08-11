@@ -540,11 +540,11 @@ class Solution(object):
                 
 sol=Solution()
 print(sol.simplifyPath("/.../a/../b/c/../d/./"))
-
  """
 
-#https://leetcode.com/problems/longest-common-prefix/description/?envType=study-plan-v2&envId=top-interview-150
 
+#https://leetcode.com/problems/longest-common-prefix/description/?envType=study-plan-v2&envId=top-interview-150
+""" 
 class Solution(object):
     def longestCommonPrefix(self, strs):
         
@@ -561,3 +561,41 @@ class Solution(object):
 sol=Solution()
 
 print(sol.longestCommonPrefix(["flower","flow","flight"]))
+ """
+ 
+ 
+#12주차 ------------------------------------------------
+
+#https://leetcode.com/problems/linked-list-cycle/description/?envType=study-plan-v2&envId=top-interview-150
+
+
+# Definition for singly-linked list.
+
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+    
+class Solution(object):
+    def hasCycle(self, head):
+        fast=head
+        while fast and fast.next:
+            head=head.next
+            fast=fast.next.next
+            if head is fast:
+                return True
+        return False
+    
+node1=ListNode(3)
+node2=ListNode(2)
+node3=ListNode(0)
+node4=ListNode(-4)
+
+node1.next=node2
+node2.next=node3
+node3.next=node4
+node4.next=node2
+
+sol=Solution()
+print(sol.hasCycle(node1))
+        
