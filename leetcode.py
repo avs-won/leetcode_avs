@@ -570,7 +570,7 @@ print(sol.longestCommonPrefix(["flower","flow","flight"]))
 
 
 # Definition for singly-linked list.
-
+""" 
 class ListNode(object):
     def __init__(self, x):
         self.val = x
@@ -598,4 +598,30 @@ node4.next=node2
 
 sol=Solution()
 print(sol.hasCycle(node1))
+        
+      """   
+        
+        
+        
+#개인
+#https://leetcode.com/problems/jump-game-ii/submissions/?envType=study-plan-v2&envId=top-interview-150
+
+
+class Solution(object):
+    def jump(self, nums):
+        result=0
+        left,right=0,0
+        
+        while right < len(nums)-1:
+            farthest = 0
+            for i in range(left,right+1):
+                farthest=max(farthest,i+nums[i])
+            left=right+1
+            right=farthest
+            result+=1
+        return result
+    
+sol=Solution()
+print(sol.jump([2,3,1,1,4]))
+
         
