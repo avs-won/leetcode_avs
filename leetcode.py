@@ -634,6 +634,7 @@ print(sol.jump([2,3,1,1,4]))
 #         self.val = val
 #         self.left = left
 #         self.right = right
+""" 
 from collections import deque
 
 class Solution(object):
@@ -658,8 +659,52 @@ class Solution(object):
                 
             level+=1
         return level
-    
-    
-    
+ """    
     
 
+
+#13주차 ------------------------------------------------
+#https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii?envType=study-plan-v2&envId=top-interview-150
+
+""" 
+class Solution(object):
+    def maxProfit(self, prices):
+        N=len(prices)
+        
+        result = 0
+        
+        for i in range(1,N):
+            if prices[i-1] < prices[i]:
+                result+=prices[i]-prices[i-1]
+            else:
+                pass
+        return result    
+    
+
+sol=Solution()
+print(sol.maxProfit([7,1,5,3,6,4]))
+"""
+ 
+#---------------------------------------------------------------------------
+
+#https://leetcode.com/problems/same-tree/?envType=study-plan-v2&envId=top-interview-150
+
+
+# Definition for a binary tree node.
+
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+        
+class Solution(object):
+    def isSameTree(self, p, q):
+        if not p and not q :
+            return True
+        if not p or not q or p.val != q.val:
+            return False
+        
+        return (self.isSameTree(p.left,q.left)) and (self.isSameTree(p.right,q.right))
+    
+        
