@@ -691,7 +691,7 @@ print(sol.maxProfit([7,1,5,3,6,4]))
 
 
 # Definition for a binary tree node.
-
+""" 
 class TreeNode(object):
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -706,5 +706,38 @@ class Solution(object):
             return False
         
         return (self.isSameTree(p.left,q.left)) and (self.isSameTree(p.right,q.right))
-    
+ """    
         
+#-----------------------------------------------------------------------------------------------------
+#https://leetcode.com/problems/merge-two-sorted-lists/?envType=study-plan-v2&envId=top-interview-150
+
+
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def mergeTwoLists(self, list1, list2):
+        temp = ListNode(-1)
+        
+        current_pos=temp
+
+        while list1 and list2:
+            if list1.val < list2.val:
+                current_pos.next=list1
+                list1=list1.next
+            else:
+                current_pos.next=list2
+                list2=list2.next
+            current_pos=current_pos.next
+            
+        if list1:
+            current_pos.next=list1
+        elif list2:
+            current_pos.next=list2
+        
+        return temp.next
+                
+    
