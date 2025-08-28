@@ -713,6 +713,7 @@ class Solution(object):
 
 
 # Definition for singly-linked list.
+""" 
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
@@ -739,5 +740,58 @@ class Solution(object):
             current_pos.next=list2
         
         return temp.next
+"""
+
+# 14주차 --------------------------------------------------
+#https://leetcode.com/problems/is-subsequence/description/?envType=study-plan-v2&envId=top-interview-150
+
+#follow - up 문제 
+#만약 S가 수억개 들어오고 t가 1개 있을때 이때도 t를 각각 순회해서 찾을건가? 더 좋은 방법은?!
+
+class SubsquenceChecker : 
+    def __init__(self, t): # t 안에서 각 문자의 위치를 저장해둠
+        self.pos = {}
+        
+        for i, ch in enumerate(t):
+            if ch not in self.pos:
+                self.pos[ch] = []
                 
+            self.pos[ch].append(i)
     
+    def isSubsequence(self, s):
+        prev = -1  # 이전에 찾은 위치
+        for ch in s:
+            if ch not in self.pos:
+                return False  # t에 그 문자가 아예 없음
+
+            found = False
+            for idx in self.pos[ch]:
+                if idx > prev:  # 이전 위치 뒤에서 찾기
+                    prev = idx
+                    found = True
+                    break
+                
+            if not found:
+                return False
+            
+        return True
+
+if __name__ == "__main__":
+    t = "ahbgdc"          # 기준 문자열
+    checker = SubsquenceChecker(t)
+
+    # 테스트 케이스들
+    print(checker.isSubsequence("abc"))     # True
+    print(checker.isSubsequence("axc"))     # False
+    print(checker.isSubsequence(""))        # True
+    print(checker.isSubsequence("ahbgdc"))  # True
+    print(checker.isSubsequence("aaaa"))    # False
+
+
+
+
+
+
+
+
+
