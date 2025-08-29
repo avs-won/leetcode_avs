@@ -747,7 +747,7 @@ class Solution(object):
 
 #follow - up 문제 
 #만약 S가 수억개 들어오고 t가 1개 있을때 이때도 t를 각각 순회해서 찾을건가? 더 좋은 방법은?!
-
+""" 
 class SubsquenceChecker : 
     def __init__(self, t): # t 안에서 각 문자의 위치를 저장해둠
         self.pos = {}
@@ -787,10 +787,42 @@ if __name__ == "__main__":
     print(checker.isSubsequence("ahbgdc"))  # True
     print(checker.isSubsequence("aaaa"))    # False
 
+ """
 
 
 
 
+
+#15주차----------------------------------------------------
+
+
+
+class Solution(object):
+    def canCompleteCircuit(self, gas, cost):
+        
+        n=len(gas)
+        
+        if sum(gas)<sum(cost): #애초부터 못 가면 -1 반환
+            return -1
+    
+        start_pos=0
+        tank=0
+    
+        for i in range(n):
+            tank+=gas[i] - cost[i]
+            if tank<0:
+                start_pos=i+1
+                tank=0
+                
+        return start_pos
+            
+            
+            
+            
+    
+sol=Solution()
+print(sol.canCompleteCircuit([1,2,3,4,5],[3,4,5,1,2]))
+        
 
 
 
