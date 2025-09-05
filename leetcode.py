@@ -794,9 +794,7 @@ if __name__ == "__main__":
 
 
 #15주차----------------------------------------------------
-
-
-
+""" 
 class Solution(object):
     def canCompleteCircuit(self, gas, cost):
         
@@ -815,15 +813,38 @@ class Solution(object):
                 tank=0
                 
         return start_pos
-            
-            
-            
-            
     
 sol=Solution()
 print(sol.canCompleteCircuit([1,2,3,4,5],[3,4,5,1,2]))
         
+ """
+
+
+# 16주차 ----------------------------------------------------
+#https://leetcode.com/problems/h-index/?envType=study-plan-v2&envId=top-interview-150
 
 
 
+class Solution(object):
+    def hIndex(self, citations):
+        n = len(citations) # n = 5
+        count = [0] * (n + 1)
 
+        for c in citations:
+            if c >= n: 
+                count[n] += 1
+            else:
+                count[c] += 1
+
+        # 뒤에서부터 누적합 -> 뒤에서 부터 보고 바로 탈출 가능
+        
+        total = 0
+        for i in range(n, -1, -1): #인데스 0번 까지 역방향으로 탈출
+            total += count[i]  # i번 이상 인용된 논문 수
+            if total >= i:     # 조건 만족 시 h-지수 결정
+                return i
+
+        return 0  # 모든 논문 인용이 0인 경우 
+        
+sol=Solution()
+print(sol.hIndex([3,0,6,1,6]))
