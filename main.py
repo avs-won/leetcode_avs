@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 """12"""
 
 """ import sys
@@ -80,62 +87,62 @@ print(*answer_dfs)
 print(*answer_bfs)
 '''
 
-
-#https://school.programmers.co.kr/learn/courses/30/lessons/131127?language=python3
-
-from collections import Counter
-
-def solution(want, number, discount):
-        answer = 0
-        want_dict={}
-        want_dict=dict(zip(want,number))
-        #1단계 want와 number를 dict로 만들기
-
-        for i in range(len(discount)-9):
-            current_dis=discount[i:i+10]
-            current_cnt=Counter(current_dis)
-            #2단계 10일씩 슬라이싱해서 할인 품목 조사
-            
-            for item in want_dict:
-                if current_cnt[item] < want_dict[item]:
-                    break
-            else:
-                answer+=1
-            #할인 품목 조사 후 want_dict와 비교해서 조건에 따라 answer 값 증가 및 패스
-            
-        return answer
-#for ~ else
-#else 구문은 for 문이 break 없이 정상적으로 돌 경우 실행 되는 파이썬만의 문법
+ 
+ 
+ 
+ 
 
 
 
+ 
+#https://www.acmicpc.net/problem/1966
 
-#https://school.programmers.co.kr/learn/courses/30/lessons/76502
+from collections import deque
 
-def solution(s):
-    answer = 0
+
+T=int(input())
+
+for i in range(T):
+    N,M=map(int,input().split())  
+    #N(자연수) : 문서의 개수
+    #M(0 ~ ) : 몇 번째로 인쇄되는지 궁금한 문서
     
-    for i in range(len(s)):
-        temp=s[i:]+s[:i]
-        temp_result=rotate_stack(temp)
-        if temp_result:
-            answer+=1
+    queue = deque(list(map(int,input().split())))
 
-    return answer
+    cnt=0
+    
+    while(queue):
+        
+        maximum = max(queue) #큐내 최고값
+        front = queue.popleft() # 큐의 앞 친구 뺌
+        
+        M-=1 # 큐의 앞에 1개 뺌으로 위치 조정
+        
+        if front == maximum: 
+            cnt+=1
+            if M<0: #0번째 친구가 나오면
+                print(cnt)
+                break
+        else : #나온것이 최고 순위가 아니라면
+            queue.append(front) #뒤에다가 추가
+            if M < 0: #최고순위가 아닌데 앞에 위치하면 맨 뒤로 이동
+                M=len(queue) - 1 
+            
+            
 
-def rotate_stack(stringg):
-    stack=[]
-    pairs = {')':'(', '}':'{', ']':'['}
-    for i in stringg:
-        if i in ["(","{","["]:
-            stack.append(i)
-        else:
-            if not stack:
-                return False
-            if stack[-1]==pairs[i]:
-                stack.pop()
-            else:
-                return False
-    return len(stack)==0
 
-solution("[](){}")
+        
+        
+        
+    
+    
+    
+
+
+    
+
+ 
+ 
+ 
+ 
+ 
