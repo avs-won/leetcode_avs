@@ -97,7 +97,7 @@ print(*answer_bfs)
  
 #https://www.acmicpc.net/problem/1966
 
-from collections import deque
+""" from collections import deque
 
 
 T=int(input())
@@ -128,15 +128,50 @@ for i in range(T):
             if M < 0: #최고순위가 아닌데 앞에 위치하면 맨 뒤로 이동
                 M=len(queue) - 1 
             
+         """    
+
+
+        
+"""         
+T=int(input())
+for i in range(T):
+    N,C=map(int,input().split())
+    result=N//C
+    if N%C != 0:
+        result+=1
+    print(result)
+        
+         """
+    
+    
+    
+#https://www.acmicpc.net/problem/11059
+
+
+S=input()
+N=len(S)
+
+to_num=list(map(int,S))
+
+presum=[0] * (N+1) #부분 합 저장 배열
+for i in range(N):
+    presum[i+1]=presum[i]+to_num[i]
+    
+for j in range(N,1,-1): #큰 길이를 보내야 하므로 역순 
+    if j % 2 != 0: #홀수 길이는 검사 안함
+            continue 
+    for start in range(0,N-j+1):
+        mid=start+j//2 
+        left=presum[mid]-presum[start]
+        right=presum[start+j]-presum[mid]
             
+        if left == right:
+            print(j)
+            exit()
+            
+    
 
 
-        
-        
-        
-    
-    
-    
 
 
     
