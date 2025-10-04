@@ -828,7 +828,7 @@ print(sol.canCompleteCircuit([1,2,3,4,5],[3,4,5,1,2]))
 #https://leetcode.com/problems/h-index/?envType=study-plan-v2&envId=top-interview-150
 
 
-
+""" 
 class Solution(object):
     def hIndex(self, citations):
         n = len(citations) # n = 5
@@ -852,3 +852,51 @@ class Solution(object):
         
 sol=Solution()
 print(sol.hIndex([3,0,6,1,6]))
+ """
+ 
+#https://www.acmicpc.net/problem/18111
+
+import sys
+input = sys.stdin.readline
+
+N,M,B=map(int,input().split()) #배열 크기 및 가진 블록 개수
+
+ground = [list(map(int,input().split())) for _ in range(N)]
+
+min_height=min(map(min,ground))
+max_height=max(map(max,ground))
+
+result_time=float('inf')
+result_height=0
+
+for height in range(min_height,max_height+1) : #각 높이마다 탐색 작업 진행
+    #height 보다 높으면 블록을 제거 -> 2sec
+    #hieght 보다 낮으면 블록을 채움 -> 1sec (단, 인벤토리 블록이 없으면 중단)    
+    #이러한 경우 중 가장 적은 최소 시간 탐색 (동일 시간일 경우 가장 높은 높이 출력)
+    
+    time = 0
+    filling_blocks_cnt=B
+    for i in range(N):
+        for ii in range(M):
+            
+            diff=ground[i][ii]-height
+            
+            if diff > 0: #블록이 height 보다 높으면
+                time+=diff*2
+                filling_blocks_cnt+=diff
+            else:
+                time+=(-diff)*1
+                filling_blocks_cnt-=(-diff)
+                
+    if filling_blocks_cnt<0:
+        continue
+        
+    if time<result_time or (time==result_time and height > result_height):
+        result_time=time
+        result_height=height
+            
+        
+            
+    
+print(result_time,result_height)
+
