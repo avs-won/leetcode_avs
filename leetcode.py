@@ -813,11 +813,7 @@ class Solution(object):
                 tank=0
                 
         return start_pos
-<<<<<<< HEAD
-            
-=======
     
->>>>>>> 32e05abd2a53599f9f70f87d791745713f0e03cc
 sol=Solution()
 print(sol.canCompleteCircuit([1,2,3,4,5],[3,4,5,1,2]))
         
