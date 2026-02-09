@@ -175,6 +175,8 @@ for i in range(1,M+1):
 print(result)
  """
 
+""" 
+
 #무지의 먹방 라이브
 
 from operator import itemgetter
@@ -206,4 +208,4 @@ def solution(food_times, k):
     
     return -1
 
-
+ """
